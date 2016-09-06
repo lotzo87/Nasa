@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/mars_rover_item"
+            android:checkable="false"
+            android:icon="@drawable/ic_action_perm_media"
+            android:title="@string/rover"
+            />
+        <item
+            android:id="@+id/today_apod_item"
+            android:checkable="false"
+            android:icon="@drawable/ic_image_camera_alt"
+            android:title="@string/today"
+            />
+        <item
+            android:id="@+id/favaorite_item"
+            android:checkable="false"
+            android:icon="@drawable/ic_action_thumb_up"
+            android:title="@string/favorite"
+            />
+        <item
+            android:id="@+id/logout_item"
+            android:checkable="false"
+            android:icon="@drawable/ic_action_candado"
+            android:title="@string/logout"
+            android:tint="@color/colorRed"
+            />
+    </group>
+</menu>

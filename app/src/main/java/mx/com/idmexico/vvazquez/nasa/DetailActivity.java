@@ -20,13 +20,13 @@ import mx.com.idmexico.vvazquez.nasa.Model.Photo;
  * Created by Alumno on 06/08/2016.
  */
 public class DetailActivity extends AppCompatActivity {
-    @BindView(R.id.detailImage)
+    /*@BindView(R.id.detailImage)
     ImageView imageView;
     @BindView(R.id.detailCamera)
     TextView txtCamera;
     @BindView(R.id.detailDate)
-    TextView txtDate;
-    private Bundle bundle = new Bundle();
+    TextView txtDate;*/
+    private Bundle bundle;
     Photo photo;
 
     @Override
@@ -35,10 +35,10 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         bundle = getIntent().getExtras();
-        Picasso.with(getApplicationContext()).load(bundle.getString("img")).into(imageView);
+        /*Picasso.with(getApplicationContext()).load(bundle.getString("img")).into(imageView);
         txtCamera.setText(bundle.getString("camera"));
-        txtDate.setText(bundle.getString("date"));
-        //Toast.makeText(getApplicationContext(), "OK" , Toast.LENGTH_LONG).show();
+        txtDate.setText(bundle.getString("date"));*/
+        //Toast.makeText(getApplicationContext(),  "OK", Toast.LENGTH_LONG).show();
         //Log.d("TAG2", bundle.getString("img").toString());
     }
 

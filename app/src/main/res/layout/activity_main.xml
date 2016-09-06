@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context="mx.com.idmexico.vvazquez.nasa.MainActivity"    >
-
-    <ImageView
-        android:id="@+id/imgVw"
+    <!--<android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/listing_toolbar"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />-->
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/imgVw"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+       android:layout_marginTop="20dp"
+        fresco:actualImageScaleType ="centerCrop"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -22,23 +34,32 @@
             android:textStyle="bold"
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textColor="@color/colorBlack"/>
         <TextView
             android:id="@+id/txtDate"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="11dp"
+            android:layout_margin="15dp"/>
 
         <TextView
             android:id="@+id/txtExplanation"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:layout_margin="15dp"
+            android:textAlignment="inherit"/>
         <TextView
             android:layout_gravity="right"
             android:textStyle="italic"
             android:id="@+id/txtCopyRight"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="11dp"
+            android:layout_margin="15dp"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -1,13 +1,20 @@
 package mx.com.idmexico.vvazquez.nasa;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +51,23 @@ public class MainActivity extends AppCompatActivity {
 
         //Log.d("Build Config", BuildConfig.URL);
 
+        // Add code to print out the key hash
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "mx.com.idmexico.vvazquez.nasa",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+
         ApodService apodService = Data.getRetrofitInstance().create(ApodService.class);
         //Call<APOD> callApodService = apodService.getTodayApod();
         /*Call<APOD> callApodService = apodService.getTodayApodWithQuery("kG43AiTcKtWf6lYFLjuq0uuBDCdtwmcJtMyireEc");
@@ -69,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<APOD2> call, Response<APOD2> response) {
 
                 Picasso.with(getApplicationContext()).load(response.body().getPhotos().get(0).getImgSrc()).into(imageView);
-                txtVTitle.setText(response.body().getPhotos().get(0).getRover().getName().toString());
+                txtVTitle.setText(response.body().getPhotos().get(0).getRover().getName());
                 txtVDate.setText(response.body().getPhotos().get(0).getEarthDate());
                 //txtVExplanation.setText(response.body().getExplanation());
                 //txtVCopyRight.setText(response.body().getCopyright());
